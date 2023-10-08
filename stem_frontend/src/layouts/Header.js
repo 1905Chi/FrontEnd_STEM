@@ -23,11 +23,10 @@ export default function Header() {
         <
         Space >
         <
-        span className = "stem" > STEM < /span>{' '} <
-        Search placeholder = "Tìm kiếm" / > { ' ' } <
+        span className = "stem" > STEM < /span> <Search placeholder="Tìm kiếm" / > { ' ' } <
         /Space>{' '} <
         /Col>{' '} <
-        /div>{' '} <
+        /div> <
         div className = "block2" >
         <
         Col >
@@ -36,21 +35,16 @@ export default function Header() {
         <
         Button shape = "circle"
         icon = { < HomeOutlined / > }
-        className = "iconHome" >
-        { ' ' } <
-        /Button>{' '} <
+        className = "iconHome" > < /Button>{' '} <
         Button shape = "circle"
         icon = { < VideoCameraOutlined / > }
-        className = "iconHome" /
-        > { ' ' } <
+        className = "iconHome" / > { ' ' } <
         Button shape = "circle"
         icon = { < MenuOutlined / > }
-        className = "iconHome" /
-        > { ' ' } <
+        className = "iconHome" / > { ' ' } <
         Button shape = "circle"
         icon = { < BellOutlined / > }
-        className = "iconHome" /
-        > { ' ' } <
+        className = "iconHome" / > { ' ' } <
         /Space>{' '} <
         /Col>{' '} <
         /div>{' '} <
@@ -65,9 +59,7 @@ export default function Header() {
         />{' '} <
         Button size = "circle"
         icon = { < BellOutlined / > }
-        />{' '} <
-        Avatar size = "circle"
-        src = "" / > { ' ' } <
+        /> <Avatar size="circle" src="" / > { ' ' } <
         /Space>{' '} <
         /Col>{' '} <
         /div>{' '} <

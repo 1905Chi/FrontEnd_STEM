@@ -2,25 +2,24 @@ import Header from "./Header";
 import Left from "./Left";
 import React from "react";
 import { Layout } from "antd";
+import "./DefaultLayout.css";
 const { Sider, Content } = Layout;
-export default function DefaultLayout({ props }) {
+export default function DefaultLayout({ children }) {
   return (
     <>
-      <Layout>
+      <Layout className="header">
         <Header> </Header>{" "}
       </Layout>{" "}
-      <Layout style={{ minHeight: "100vh" }}>
-        <Layout>
-          <Sider width="25%" theme="light" collapsible collapsedWidth={0}>
-            {" "}
-            <Left> </Left>{" "}
-          </Sider>{" "}
-          <Content style={{ margin: "16px" }}> {props} </Content>{" "}
-          <Sider width="25%" theme="light" collapsible collapsedWidth={0}>
-            {" "}
-            {/* Đặt nội dung thanh right ở đây */}{" "}
-          </Sider>{" "}
-        </Layout>{" "}
+      <Layout className="content">
+        <Sider width="20%" theme="light">
+          {" "}
+          <Left> </Left>{" "}
+        </Sider>{" "}
+        <Content style={{ margin: "16px", flex: 5 }}> {children} </Content>{" "}
+        <Sider width="20%" theme="light">
+          {" "}
+          {/* Đặt nội dung thanh right ở đây */}{" "}
+        </Sider>{" "}
       </Layout>{" "}
     </>
   );

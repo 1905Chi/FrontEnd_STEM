@@ -1,7 +1,21 @@
-export default function forgotpassword() {
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import EmailForm from "./EmailForm/EmailForm";
+import PasswordForm from "./passwordform/PasswordForm";
+export default function ForgotPassword() {
+  const [currentStep, SetCurrentStep] = useState(1);
+  const { uuid } = useParams();
+
   return (
-    <div>
-      <h1> ForgotPassword </h1> <p> This is the forgotpassword page </p>{' '}
-    </div>
+    <>
+      <div className="forgotpassword">
+        {" "}
+        {uuid && uuid.length > 0 ? (
+          <PasswordForm uuid={uuid} />
+        ) : (
+          <EmailForm uuid={uuid} />
+        )}{" "}
+      </div>{" "}
+    </>
   );
 }
