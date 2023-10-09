@@ -4,11 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-.enteremail-resetform {
+.register-body {
   width: 100%;
-  max-width: 330px;
+  max-width: 400px;
   padding: 5px;
   content: 30px;
   border: 3px solid blue;

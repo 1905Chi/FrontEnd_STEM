@@ -24,7 +24,7 @@ export default function Register() {
 				// Xử lý kết quả sau khi gửi thành công
 				if (response.statusCode === 200) {
 					toast.success('Account created successfully , Plese check your email to verify your account');
-					navigate("/login")
+					
 				} 
 				
 			})
@@ -57,7 +57,7 @@ export default function Register() {
 
 	return (
 		<div className="Register-form">
-			<div className="enteremail-resetform">
+			<div className="register-body">
 				<h2> Register </h2>
 				<Form name="register" onFinish={handleNext} scrollToFirstError>
 					<Form.Item
@@ -66,11 +66,11 @@ export default function Register() {
 						rules={[
 							{
 								type: 'email',
-								message: 'The input is not valid E-mail!',
+								message: 'Nhập email hợp lệ',
 							},
 							{
 								required: true,
-								message: 'Please input your E-mail!',
+								message: 'Vui lòng nhập email của bạn',
 							},
 						]}
 					>
@@ -82,7 +82,7 @@ export default function Register() {
 						rules={[
 							{
 								required: true,
-								message: 'Please input your password!',
+								message: 'Vui lòng nhập mật khẩu',
 							},
 						]}
 						hasFeedback
@@ -97,14 +97,14 @@ export default function Register() {
 						rules={[
 							{
 								required: true,
-								message: 'Please confirm your password!',
+								message: 'Vui lòng xác thực lại mật khẩu',
 							},
 							({ getFieldValue }) => ({
 								validator(_, value) {
 									if (!value || getFieldValue('password') === value) {
 										return Promise.resolve();
 									}
-									return Promise.reject(new Error('The new password that you entered do not match!'));
+									return Promise.reject(new Error('Mật khẩu không khớp!'));
 								},
 							}),
 						]}
@@ -117,7 +117,7 @@ export default function Register() {
 						rules={[
 							{
 								required: true,
-								message: 'Please select your roles!',
+								message: 'Chọn loại tài khoản!',
 							},
 						]}
 					>
@@ -129,7 +129,7 @@ export default function Register() {
 					</Form.Item>
 					<Form.Item>
 						<Button type="primary" htmlType="submit" style={{ width: '100%' }}>
-							Submit
+							Gửi
 						</Button>
 					</Form.Item>
 				</Form>

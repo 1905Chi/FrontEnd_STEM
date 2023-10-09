@@ -10,17 +10,22 @@ import './Login.css';
 
 function Login() {
 	const notify = (string) => toast(string); // Hàm hiển thị thông báo
+	const config ={
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	}
 
 	const onFinish = (values) => {
 		// Thực hiện kiểm tra đăng nhập tại đây
 		const data = { email: values.email, password: values.password };
 		axios
-			.post(url + 'api/auth/login', data)
+			.post(url + 'api/auth/login', data,config)
 			.then((response) => {
 				// Xử lý kết quả sau khi gửi thành công
 				if (response.data.statusCode === 200) {
 					localStorage.setItem('token', 'yourtoken'); // Lưu token vào localStorage
-					localStorage.setItem('login', true); // Lưu thông tin user vào localStorage
+					localStorage.setItem('login', true); // Lưu thông tin đăng nhập vào localStorage
 					// navigate('/');
 					// Chuyển hướng về trang chủ
 					window.location.href = '/';
@@ -43,7 +48,7 @@ function Login() {
 					}
 				} else if (error.request) {
 					// Lỗi không có phản hồi từ máy chủ
-					toast.error(error.request);
+					toast.error(error.request.data.message);
 				} else {
 					// Lỗi trong quá trình thiết lập yêu cầu
 					toast.error('Lỗi khi thiết lập yêu cầu.');
@@ -60,16 +65,7 @@ function Login() {
 			<div className="login-container">
 				<h2> Đăng nhập </h2>
 				<Form
-					name="basic"
-					labelCol={{
-						span: 8,
-					}}
-					wrapperCol={{
-						span: 16,
-					}}
-					style={{
-						maxWidth: 600,
-					}}
+					
 					initialValues={{
 						remember: true,
 					}}
@@ -78,7 +74,7 @@ function Login() {
 				>
 					<Form.Item
 						label="Email"
-						name="Email"
+						name="email"
 						rules={[
 							{
 								type: 'email',
@@ -93,8 +89,8 @@ function Login() {
 						<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
 					</Form.Item>
 					<Form.Item
-						label="Password"
-						name="Password"
+						label="Mật khẩu"
+						name="password"
 						rules={[
 							{
 								required: true,
@@ -110,22 +106,25 @@ function Login() {
 					</Form.Item>
 					<Form.Item>
 						<Form.Item name="remember" valuePropName="checked" noStyle>
-							<Checkbox> Remember me </Checkbox>
+							<Checkbox>Lưu </Checkbox>
 						</Form.Item>
-						<a className="login-form-forgot" href="">
-							Forgot password
+						<a className="login-form-forgot" href="/forgot-password/">
+							Quên mật khẩu
 						</a>
 					</Form.Item>
 					<Form.Item
-						wrapperCol={{
-							offset: 8,
-							span: 16,
-						}}
+						
 					>
 						<Button type="primary" htmlType="submit">
-							Submit
+							Gửi
 						</Button>
-						Or <a href=""> register now! </a>
+						
+					</Form.Item>
+
+					<Form.Item>
+					<Form.Item>
+					Hoặc <a href="/register"> Đăng ký  </a>
+					</Form.Item>
 					</Form.Item>
 				</Form>
 			</div>

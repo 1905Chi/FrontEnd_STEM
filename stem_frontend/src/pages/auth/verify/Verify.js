@@ -1,11 +1,13 @@
 import React from 'react';
-import { Button, Form, Input, Radio } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import './Verify.css';
 import { DatePicker, Select } from 'antd';
 import axios from 'axios';
 import { url } from '../../../constants/Constant';
+
+
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -17,7 +19,8 @@ export default function Verify() {
 		const data = {
 			firstName: values.firstname,
 			lastName: values.lastname,
-			dob: values.date_picker.format('DD/MM/YYYY'),
+			dob: values.date_picker.format('YYYY-MM-DD'),
+			phone: values.phone,
 			gender: values.gender,
 		};
 		axios
@@ -102,9 +105,10 @@ export default function Verify() {
 				>
 					<Input />
 				</Form.Item>
-				<Form.Item name="date_picker" label="Day of birth" {...config}>
-					<DatePicker format="DD/MM/YYYY" />
-				</Form.Item>
+				<Form.Item name="date_picker" label="Day of birth" >
+					<DatePicker format="DD-MM-YYYY" className='date-picker-verify' />
+				</Form.Item> 
+				
 				<Form.Item
 					name="phone"
 					label="Your phone number"

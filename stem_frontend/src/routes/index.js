@@ -13,7 +13,8 @@ const publicRoutes = [
   { path: "/forgot-password/", component: ForgotPassword },
   { path: "/forgot-password/:uuid", component: ForgotPassword },
   { path: "/verify/:uuid", component: Verify },
+
 ];
 
-const notFoundRoute = { path: "*", component: NotFound };
+const notFoundRoute = { path: "/*", component: NotFound };
 export { privateRoutes, publicRoutes, notFoundRoute };
